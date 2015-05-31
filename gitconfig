@@ -13,6 +13,9 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  l = log --pretty=colored
+[pretty]
+  colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -22,9 +25,22 @@
   template = ~/.gitmessage
 [fetch]
   prune = true
+[pull]
+  rebase = true
 [rebase]
   autosquash = true
+[git-up "bundler"]
+  check = true
 [include]
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+  tool = vimdiff
+[diff "gpg"]
+  textconv = dotgpg unsafe_cat
+[merge "gpg"]
+  name = dotgpg merge driver
+  driver = "dotgpg merge %O %A %B"
+[user]
+  email = jaisonreis@gmail.com
+  name = Jaison Erick
