@@ -49,6 +49,36 @@ if g:has_async
   Plug 'dense-analysis/ale'
 endif
 
+" My Bundles
+Plug 'altercation/vim-colors-solarized' " Enable Solarized colorscheme
+Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux and vim
+Plug 'mattn/emmet-vim'                  " Expading abbreviations with Emmet
+Plug 'scrooloose/nerdtree'              " File navigation panel on Vim
+Plug 'sickill/vim-pasta'                " Pasting with context indentation
+Plug 'christoomey/vim-tmux-runner'      " Run from vim on Tmux panel
+Plug 'vim-scripts/BufOnly.vim'          " Close all buffers but the current
+Plug 'mxw/vim-jsx'                      " Syntax Highlight with React JSX
+Plug 'kylef/apiblueprint.vim'           " Api Blueprint
+Plug 'majutsushi/tagbar'                " Vim plugin that displays tags in a window, ordered by scope
+Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
+Plug 'scrooloose/syntastic'            " Syntax Check plugin
+Plug 'tpope/vim-unimpaired'            " pairs of handy bracket mappings
+Plug 'christoomey/vim-system-copy'     " System copy and paste (cp and cv)
+
+" Ruby Bundles
+Plug 'kana/vim-textobj-user'          " Create your own text objects (used by vim-textobj-rubyblock)
+Plug 'nelstrom/vim-textobj-rubyblock' " Ruby text objects
+Plug 'thoughtbot/vim-rspec'           " Run RSpecs from vim
+
+" Go Bundles
+Plug 'gevans/vim-ginkgo' " Ginkgo syntax highlight
+Plug 'jaisonerick/vim-ginkgo-runner' " Ginkgo test plugin
+
+" Python Bundles
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'klen/python-mode'
+
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif

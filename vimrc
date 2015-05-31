@@ -1,7 +1,9 @@
+scriptencoding utf-8
 set encoding=utf-8
 
 " Leader
-let mapleader = " "
+let &t_Co=256
+let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -25,6 +27,9 @@ endif
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
+
+set background=dark
+colorscheme solarized
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -105,12 +110,13 @@ if executable('ag')
 endif
 
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 " Numbers
 set number
-set numberwidth=5
+set relativenumber
+set numberwidth=4
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -129,22 +135,6 @@ inoremap <S-Tab> <C-n>
 
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<Space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -183,3 +173,199 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" ==== OWN CONFIGS ====
+
+" Leave insert mode using jj
+imap jj <Esc>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+" Aggregate errors from all checkers
+let g:syntastic_aggregate_errors = 1
+
+" Doesnt check when quiting
+let g:syntastic_check_on_wq = 0
+
+" Auto open the errors list when they are detected
+" let g:syntastic_auto_loc_list = 1
+
+" Always stick any detected errors in the location-list
+let g:syntastic_always_populate_loc_list = 1
+
+" Expand %% to current file directory as abbr.
+cabbr <expr> %% expand('%:p:h')
+
+" Setup Folds
+set nofoldenable
+set foldnestmax=10
+set foldmethod=indent
+
+" Open NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Setup Poerline
+" Enable the list of buffers
+set showtabline=2
+
+" Setup buffers as tabs
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" Open a local project vimrc if there's one
+if filereadable(glob("./.git/vimrc.local"))
+  source ./.git/vimrc.local
+endif
+
+" Ruby Settings =====
+let g:rspec_command = "call VtrSendCommand('bin/rspec --profile -- {spec}')"
+
+augroup filetypedetect
+  au BufRead,BufNewFile *.inky set filetype=eruby.html
+augroup END
+
+" Javascript Settings =====
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+let g:jsx_ext_required = 0
+
+" HTML Settings =====
+let g:syntastic_html_tidy_exec = 'tidy5'
+
+let g:syntastic_html_tidy_ignore_errors = [
+  \ ' proprietary attribute "ng-',
+  \ ' proprietary attribute "item',
+  \ ' proprietary attribute "property',
+  \ ' proprietary attribute "ui-',
+  \ '<ng-include> is not recognized',
+  \ 'discarding unexpected <ng',
+  \ 'discarding unexpected </ng'
+  \ ]
+
+let g:html_indent_inctags = 'p,li,dt,dd,container,columns,row,button,wrapper,callout'
+
+" Go Settings ==========
+let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {spec}')"
+au FileType go set noexpandtab
+
+" Hide tab extra char
+" au FileType go set listchars+=tab:  
+au FileType go set nolist
+
+let g:syntastic_go_checkers = [ 'go', 'gofmt', 'golint', 'govet' ]
+
+" Automatically insert import paths
+let g:go_fmt_command = "goimports"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" Python Settings =====
+au FileType python set tabstop=4
+au FileType python set tabstop=4
+au FileType python set softtabstop=4
+au FileType python set shiftwidth=4
+au FileType python set textwidth=120
+au FileType python set expandtab
+au FileType python set autoindent
+au FileType python set fileformat=unix
+
+let python_highlight_all=1
+let g:pymode_rope_completion = 0
+
+" Leader ====================
+" ===========================
+
+" Display TagBar
+nmap <c-t> :TagbarToggle<CR>
+
+nnoremap <leader>r :RunInInteractiveShell<space>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" Open NERDTree on current file
+nmap <leader>n :NERDTreeFind<CR>
+
+" Zoom in/out vim pane
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" VTR mappings
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+
+" Search the word under cursor on current project
+nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Search the word under cursor as file name using Ctrl+P
+nmap <leader>lw :CommandT<CR><C-\>w
+
+" Display syntax errors panels
+nmap <leader>eo :Errors<CR>
+nmap <leader>ec :lclose<CR>
+
+" Move to the next buffer
+nmap <leader>a :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>z :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Close all buffers but the current
+nmap <leader>ba :BufOnly<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+" Ruby RSpec
+au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
+au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
+
+" Go Leaders
+au FileType go nnoremap <leader>t :call RunCurrentGinkgoFile()<CR>
+au FileType go nnoremap <leader>s :call RunNearestGinkgo()<CR>
+au FileType go nnoremap <leader>l :call RunLastGinkgo()<CR>
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>s <Plug>(go-test-func)
+au FileType go nmap <leader>i <Plug>(go-info)
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>ds <Plug>(go-implements)
+
+" Api Blueprint functions
+au FileType apiblueprint set ai
+" au FileType apiblueprint set si
+au FileType apiblueprint set cin
+au FileType apiblueprint set tabstop=4
+au FileType apiblueprint set shiftwidth=4
+au FileType apiblueprint setlocal textwidth=160
+
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+function! ListLeaders()
+     silent! redir @a
+     silent! nmap <LEADER>
+     silent! redir END
+     silent! new
+     silent! put! a
+     silent! g/^s*$/d
+     silent! %s/^.*,//
+     silent! normal ggVg
+     silent! sort
+     silent! let lines = getline(1,"$")
+endfunction
