@@ -34,6 +34,8 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+[ -s "/Users/jaisonerick/.scm_breeze/scm_breeze.sh" ] && source "/Users/jaisonerick/.scm_breeze/scm_breeze.sh"
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 

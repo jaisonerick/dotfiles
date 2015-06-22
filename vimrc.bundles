@@ -49,6 +49,25 @@ if g:has_async
   Plug 'dense-analysis/ale'
 endif
 
+" My Bundles
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'mattn/emmet-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
+Plug 'wakatime/vim-wakatime'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'sickill/vim-pasta'
+Plug 'SirVer/ultisnips'
+Plug 'tobyS/pdv'
+Plug 'tobyS/vmustache'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'rizzatti/dash.vim'
+
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif

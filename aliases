@@ -15,6 +15,17 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# Git
+alias gdc="git diff --cached"
+alias gitfix="git diff HEAD --name-only | xargs -L1 php-cs-fixer fix"
+
+# Tmux
+alias tma="tmux new -s"
+alias tms="tmux attach -t"
+alias tmx="tmux switch -t"
+alias tml="tmux list-sessions"
+
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
