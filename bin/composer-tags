@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+PATH="/usr/local/bin:$PATH"
+dir="`git rev-parse --git-dir`"
+trap 'rm -f "$dir/$$.vendor-tags"' EXIT
+
+"${CTAGS:-ctags}" --tag-relative -f"$dir/$$.vendor-tags" \
+  --PHP-kinds=+cf \
+  --languages=-javascript,sql --recurse=yes vendor
+
+mv "$dir/$$.vendor-tags" "$dir/vendor-tags"

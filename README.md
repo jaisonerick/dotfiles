@@ -13,7 +13,7 @@ Install
 
 Clone onto your laptop:
 
-    git clone git://github.com/thoughtbot/dotfiles.git
+    git clone git://github.com/jaisonerick/dotfiles.git
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
@@ -34,7 +34,7 @@ configuration options:
 * Exclude the `README.md` and `LICENSE` files, which are part of
   the `dotfiles` repository but do not need to be symlinked in.
 * Give precedence to personal overrides which by default are placed in
-  `~/dotfiles-local`
+  `~/Dropbox/dotfiles`
 
 You can safely run `rcup` multiple times to update:
 

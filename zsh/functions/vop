@@ -1,0 +1,3 @@
+functin vop() {
+  vim $(ag -l $1 | head -n 1)
+}
