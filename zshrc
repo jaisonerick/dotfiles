@@ -9,7 +9,7 @@ setopt promptsubst
 export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions /usr/local/share/zsh-completions $fpath)
 
 # completion
 autoload -U compinit
@@ -146,7 +146,10 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 zle -N edit-command-line
 
-[ -s "/Users/jaisonerick/.scm_breeze/scm_breeze.sh" ] && source "/Users/jaisonerick/.scm_breeze/scm_breeze.sh"
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+export PATH="$HOME/.bin:$PATH"
+eval "$(rbenv init - --no-rehash zsh)"
