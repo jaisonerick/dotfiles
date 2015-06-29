@@ -113,7 +113,8 @@ set colorcolumn=+1
 
 " Numbers
 set number
-set numberwidth=5
+set relativenumber
+set numberwidth=4
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -172,6 +173,28 @@ nnoremap [r :ALEPreviousWrap<CR>
 " Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <c-p> :Files<cr>
 
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" VTR mappings
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>sc :VtrSendCommandToRunner<cr>
+nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>cr :VtrClearRunner<cr>
+nnoremap <leader>sf :VtrSendFile<cr>
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
 " Aggregate errors from all checkers
 let g:syntastic_aggregate_errors = 1
 
@@ -189,7 +212,7 @@ let g:syntastic_always_populate_loc_list = 1
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Autocomplete with dictionary words when spell check is on
-set complete+=kspell
+set complete=.,w,b,t,i
 
 " Always use vertical diffs
 set diffopt+=vertical
@@ -268,11 +291,11 @@ endif
 " PHP Settings ======
 
 " Setup Php namespaces
-inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>u :call PhpInsertUse()<CR>
+inoremap ,u <C-O>:call PhpInsertUse()<CR>
+noremap <leader>u :call PhpInsertUse()<CR>
 
-inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-noremap <Leader>e :call PhpExpandClass()<CR>
+inoremap ,e <C-O>:call PhpExpandClass()<CR>
+noremap <leader>e :call PhpExpandClass()<CR>
 
 " Set checkers for PHP
 let g:syntastic_php_checkers = [ 'php', 'phpcs', 'phpmd' ]
@@ -294,17 +317,20 @@ function! RunPHPUnitCurrentFile()
   execute s:phpunit_command
 endfunction
 
-au FileType php nnoremap <Leader>t :call RunPHPUnitCurrentFile()<CR>
+au FileType php nnoremap <leader>t :call RunPHPUnitCurrentFile()<CR>
 au FileType php set omnifunc=phpcomplete#CompletePHP
 
 "  Setup PHP Documentator to run on <leader>d
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-au FileType php nnoremap <buffer> <Leader>d :call pdv#DocumentWithSnip()<CR>
+au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-au FileType ruby nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-au FileType ruby nnoremap <Leader>s :call RunNearestSpec()<CR>
-au FileType ruby nnoremap <Leader>l :call RunLastSpec()<CR>
+let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
+
+au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
+au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
+
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'jshint' ]

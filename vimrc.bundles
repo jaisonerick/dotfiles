@@ -67,6 +67,9 @@ Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'rizzatti/dash.vim'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
