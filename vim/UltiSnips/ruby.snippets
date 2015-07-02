@@ -1,0 +1,36 @@
+global !p
+
+def defaultFeatureTitle(snip):
+	basename = snip.basename.replace('_spec', '')
+	feature = basename.replace('_', ' ')
+	return feature
+
+def capitalizeFile(snip):
+	feature = snip.basename.replace('_', ' ').title().replace(' ', '')
+	return feature
+
+endglobal
+
+snippet feat "Feature file" !
+feature "`!p snip.rv = defaultFeatureTitle(snip) `" do
+	${0}
+end
+endsnippet
+
+snippet scen "Scenario"
+scenario "${1:description}" do
+	${0}
+end
+endsnippet
+
+snippet contr "Controller" !
+class `!p snip.rv = capitalizeFile(snip) ` < ApplicationController
+	${0}
+end
+endsnippet
+
+snippet clas "Class" !
+class `!p snip.rv = capitalizeFile(snip) `
+	${0}
+end
+endsnippet

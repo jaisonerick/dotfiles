@@ -1,0 +1,19 @@
+snippet f.l "Form label"
+<%= f.label :${1:attribute}${2:, "${3:${1/[[:alpha:]]+|(_)/(?1: :\u$0)/g}}"} %>
+endsnippet
+
+snippet f.t "Form text field"
+<%= f.text_field :${1:attribute} %>
+endsnippet
+
+snippet f.e "Form email field"
+<%= f.email_field :${1:attribute} %>
+endsnippet
+
+snippet f.p "Form password"
+<%= f.password_field :${1:attribute} %>
+endsnippet
+
+snippet f.s "Form submit"
+<%= f.submit "${1:Submit}"${2:, :disable_with => '${3:$1ing...}'} %>
+endsnippet
