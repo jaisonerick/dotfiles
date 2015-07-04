@@ -22,7 +22,6 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-set background=dark
 colorscheme solarized
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -95,26 +94,20 @@ set numberwidth=4
 " will insert tab at beginning of line,
 " will use completion if not at beginning
 set wildmode=list:longest,list:full
-set wildmenu wildmode=longest:full,full
+set wildmenu wildmode=list:full
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 set tags+=.git/tags,.git/vendor-tags
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -132,20 +125,6 @@ nnoremap <C-l> <C-w>l
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
-
-" VTR mappings
-nnoremap <leader>va :VtrAttachToPane<cr>
-nnoremap <leader>sc :VtrSendCommandToRunner<cr>
-nnoremap <leader>sl :VtrSendLinesToRunner<cr>
-vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>or :VtrOpenRunner<cr>
-nnoremap <leader>kr :VtrKillRunner<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr>
-nnoremap <leader>cr :VtrClearRunner<cr>
-nnoremap <leader>sf :VtrSendFile<cr>
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
@@ -164,6 +143,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
+
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
@@ -173,18 +153,9 @@ set complete=.,w,b,t,i
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Search the word under cursor on current project
-nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" Search the word under cursor as file name using Ctrl+P
-nmap <leader>lw :CtrlP<CR><C-\>w
 
 " Leave insert mode using jj
 imap jj <Esc>
-
-" Display syntax errors panels
-nmap <leader>eo :Errors<CR>
-nmap <leader>ec :lclose<CR>
 
 " Expand %% to current file directory as abbr.
 cabbr <expr> %% expand('%:p:h')
@@ -201,12 +172,6 @@ set foldmethod=indent
 
 " Open NerdTree
 map <C-n> :NERDTreeToggle<CR>
-nmap <Leader>n :NERDTreeFind<CR>
-
-" Setup EasyMotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap s <Plug>(easymotion-s)
-let g:EasyMotion_smartcase = 1
 
 " Setup Airline
 " Enable the list of buffers
@@ -221,23 +186,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
-
-" Move to the next buffer
-nmap <leader>a :bnext<CR>
-
-" Move to the previous buffer
-nmap <leader>z :bprevious<CR>
-
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
-
-" Show all open buffers and their status
-nmap <leader>bl :ls<CR>
-
 " Open a local project vimrc if there's one
 if filereadable(glob("./.git/vimrc.local"))
   source ./.git/vimrc.local
@@ -247,46 +195,41 @@ endif
 " PHP Settings ======
 
 " Setup Php namespaces
-inoremap ,u <C-O>:call PhpInsertUse()<CR>
-noremap <leader>u :call PhpInsertUse()<CR>
-
-inoremap ,e <C-O>:call PhpExpandClass()<CR>
-noremap <leader>e :call PhpExpandClass()<CR>
+" inoremap ,u <C-O>:call PhpInsertUse()<CR>
+" noremap <leader>u :call PhpInsertUse()<CR>
+"
+" inoremap ,e <C-O>:call PhpExpandClass()<CR>
+" noremap <leader>e :call PhpExpandClass()<CR>
 
 " Set checkers for PHP
-let g:syntastic_php_checkers = [ 'php', 'phpcs', 'phpmd' ]
-let g:syntastic_php_phpcs_args = "--standard=PSR2"
-let g:syntastic_php_phpmd_args = "cleancode,codesize,controversial,design,naming,unusedcode"
+" let g:syntastic_php_checkers = [ 'php', 'phpcs', 'phpmd' ]
+" let g:syntastic_php_phpcs_args = "--standard=PSR2"
+" let g:syntastic_php_phpmd_args = "cleancode,codesize,controversial,design,naming,unusedcode"
 
 
 " Style for PHP
-au FileType php set tabstop=4
-au FileType php set shiftwidth=4
-au FileType php set textwidth=120
-au FileType php set foldenable
-au FileType php set foldlevel=1
+" au FileType php set tabstop=4
+" au FileType php set shiftwidth=4
+" au FileType php set textwidth=120
+" au FileType php set foldenable
+" au FileType php set foldlevel=1
 
 " Test current file on PHPUnit
-function! RunPHPUnitCurrentFile()
-  let s:phpunit_default_command = "phpunit %"
-  let s:phpunit_command = "!clear && echo " . s:phpunit_default_command . " && " . s:phpunit_default_command
-  execute s:phpunit_command
-endfunction
-
-au FileType php nnoremap <leader>t :call RunPHPUnitCurrentFile()<CR>
-au FileType php set omnifunc=phpcomplete#CompletePHP
+" function! RunPHPUnitCurrentFile()
+"   let s:phpunit_default_command = "phpunit %"
+"   let s:phpunit_command = "!clear && echo " . s:phpunit_default_command . " && " . s:phpunit_default_command
+"   execute s:phpunit_command
+" endfunction
+"
+" au FileType php nnoremap <leader>t :call RunPHPUnitCurrentFile()<CR>
+" au FileType php set omnifunc=phpcomplete#CompletePHP
 
 "  Setup PHP Documentator to run on <leader>d
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
+" let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+" au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
 let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
-
-au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
-au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
-
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'jshint' ]
@@ -304,6 +247,61 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ 'discarding unexpected </ng'
   \ ]
 
+" Leader ====================
+" ===========================
+
+nnoremap <leader>r :RunInInteractiveShell<space>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" Open NERDTree on current file
+nmap <leader>n :NERDTreeFind<CR>
+
+" Zoom in/out vim pane
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" VTR mappings
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>sc :VtrSendCommandToRunner<cr>
+nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>cr :VtrClearRunner<cr>
+nnoremap <leader>sf :VtrSendFile<cr>
+
+" Search the word under cursor on current project
+nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Search the word under cursor as file name using Ctrl+P
+nmap <leader>lw :CtrlP<CR><C-\>w
+
+" Display syntax errors panels
+nmap <leader>eo :Errors<CR>
+nmap <leader>ec :lclose<CR>
+
+" Move to the next buffer
+nmap <leader>a :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>z :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Close all buffers but the current
+nmap <leader>ba :BufOnly<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+" Ruby RSpec
+au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
+au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

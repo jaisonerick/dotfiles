@@ -51,6 +51,7 @@ Plug 'SirVer/ultisnips'                 " Snippets for vim with python support
 Plug 'sickill/vim-pasta'                " Pasting with context indentation
 Plug 'christoomey/vim-tmux-runner'      " Run from vim on Tmux panel
 Plug 'vim-scripts/Align'                " Vertically align based on a character
+Plug 'vim-scripts/BufOnly.vim'          " Close all buffers but the current
 
 " Ruby Bundles
 Plug 'vim-ruby/vim-ruby'              " Ruby support on vim
