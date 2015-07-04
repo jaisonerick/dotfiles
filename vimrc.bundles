@@ -44,32 +44,44 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
 
 if g:has_async
   Plug 'dense-analysis/ale'
 endif
 
 " My Bundles
-Plug 'altercation/vim-colors-solarized'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'mattn/emmet-vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
-Plug 'wakatime/vim-wakatime'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
-Plug 'arnaud-lb/vim-php-namespace'
-Plug 'sickill/vim-pasta'
-Plug 'SirVer/ultisnips'
-Plug 'tobyS/pdv'
-Plug 'tobyS/vmustache'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'rizzatti/dash.vim'
-Plug 'christoomey/vim-tmux-runner'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'altercation/vim-colors-solarized' " Enable Solarized colorscheme
+Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux and vim
+Plug 'mattn/emmet-vim'                  " Expading abbreviations with Emmet
+Plug 'scrooloose/nerdtree'              " File navigation panel on Vim
+Plug 'bling/vim-airline'                " Status/tabline for vim
+Plug 'wakatime/vim-wakatime'            " Productivity monitoring WakaTime integration
+Plug 'honza/vim-snippets'               " Ultisnips snippets
+Plug 'SirVer/ultisnips'                 " Snippets for vim with python support
+Plug 'sickill/vim-pasta'                " Pasting with context indentation
+Plug 'christoomey/vim-tmux-runner'      " Run from vim on Tmux panel
+Plug 'vim-scripts/Align'                " Vertically align based on a character
+Plug 'scrooloose/syntastic'            " Syntax Check plugin
+
+" Ruby Bundles
+Plug 'vim-ruby/vim-ruby'              " Ruby support on vim
+Plug 'kana/vim-textobj-user'          " Create your own text objects (used by vim-textobj-rubyblock)
+Plug 'nelstrom/vim-textobj-rubyblock' " Ruby text objects
+Plug 'tpope/vim-rails'                " Rails support for vim
+Plug 'thoughtbot/vim-rspec'           " Run RSpecs from vim
+Plug 'tpope/vim-bundler'              " Support for bundler inside vim
+Plug 'tpope/vim-endwise'              " Auto add end on class, module, def, etc.
+
+
+" PHP Bundles
+" Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'tobyS/vmustache' " Dependency of tobyS/pdv
+" Plug 'tobyS/pdv'
+
+" Unused Bundles
+" Plug 'Lokaltog/vim-easymotion'
+" Plug 'rizzatti/dash.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
