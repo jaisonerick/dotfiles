@@ -180,6 +180,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Add airline powerfonts symbols
+let g:airline_powerline_fonts = 1
+
 " Setup buffers as tabs
 
 " This allows buffers to be hidden if you've modified a buffer.
