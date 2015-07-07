@@ -152,4 +152,5 @@ zle -N edit-command-line
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 export PATH="$HOME/.bin:$PATH"
+
 eval "$(rbenv init - --no-rehash zsh)"
