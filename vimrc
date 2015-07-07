@@ -307,14 +307,8 @@ nnoremap <leader>= :wincmd =<cr>
 
 " VTR mappings
 nnoremap <leader>va :VtrAttachToPane<cr>
-nnoremap <leader>sc :VtrSendCommandToRunner<cr>
-nnoremap <leader>sl :VtrSendLinesToRunner<cr>
-vnoremap <leader>sl :VtrSendLinesToRunner<cr>
 nnoremap <leader>or :VtrOpenRunner<cr>
-nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
-nnoremap <leader>cr :VtrClearRunner<cr>
-nnoremap <leader>sf :VtrSendFile<cr>
 
 " Search the word under cursor on current project
 nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -345,6 +339,21 @@ nmap <leader>bl :ls<CR>
 au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
 au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
 au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
+
+let g:syntastic_ruby_checkers = ['rubocop']
+
+function! ListLeaders()
+     silent! redir @a
+     silent! nmap <LEADER>
+     silent! redir END
+     silent! new
+     silent! put! a
+     silent! g/^s*$/d
+     silent! %s/^.*,//
+     silent! normal ggVg
+     silent! sort
+     silent! let lines = getline(1,"$")
+endfunction
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
