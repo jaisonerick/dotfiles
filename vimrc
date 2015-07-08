@@ -272,7 +272,7 @@ endif
 " au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
+let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'jshint' ]
