@@ -94,7 +94,7 @@ set numberwidth=4
 " will insert tab at beginning of line,
 " will use completion if not at beginning
 set wildmode=list:longest,list:full
-set wildmenu wildmode=list:full
+set wildmenu wildmode=list:longest,list:full
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
@@ -232,7 +232,7 @@ endif
 " au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
+let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'jshint' ]
