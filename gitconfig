@@ -27,6 +27,8 @@
   prune = true
 [rebase]
   autosquash = true
+[git-up "bundler"]
+  check = true
 [include]
   path = ~/.gitconfig.local
 [diff]
