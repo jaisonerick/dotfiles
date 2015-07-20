@@ -1,3 +1,4 @@
+scriptencoding utf-8
 set encoding=utf-8
 
 " Leader
@@ -290,6 +291,15 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ 'discarding unexpected </ng'
   \ ]
 
+" Go Settings ==========
+au FileType go set noexpandtab
+
+" Hide tab extra char
+au FileType go set listchars+=tab:  
+
+" Automatically insert import paths
+let g:go_fmt_command = "goimports"
+
 " Leader ====================
 " ===========================
 
@@ -339,6 +349,12 @@ nmap <leader>bl :ls<CR>
 au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
 au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
 au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
+
+" Go Leaders
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>i <Plug>(go-info)
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>dv <Plug>(go-def-vertical)
 
 let g:syntastic_ruby_checkers = ['rubocop']
 
