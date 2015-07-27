@@ -26,7 +26,7 @@ alias tmx="tmux switch -t"
 alias tml="tmux list-sessions"
 
 # SumOne
-alias yb="c s1-youbiquity"
+alias yb="c yb"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

@@ -2,6 +2,7 @@ scriptencoding utf-8
 set encoding=utf-8
 
 " Leader
+let &t_Co=256
 let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -27,6 +28,7 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+set background=dark
 colorscheme solarized
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
