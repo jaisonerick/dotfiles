@@ -275,7 +275,7 @@ endif
 let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 
 " Javascript Settings =====
-let g:syntastic_javascript_checkers = [ 'jshint' ]
+let g:syntastic_javascript_checkers = [ 'eslint' ]
 
 " HTML Settings =====
 let g:syntastic_html_tidy_exec = 'tidy5'
