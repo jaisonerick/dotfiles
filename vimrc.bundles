@@ -72,6 +72,7 @@ Plug 'thoughtbot/vim-rspec'           " Run RSpecs from vim
 Plug 'tpope/vim-bundler'              " Support for bundler inside vim
 Plug 'tpope/vim-endwise'              " Auto add end on class, module, def, etc.
 
+Plug 'justinj/vim-react-snippets'     " React snippets
 
 " PHP Bundles
 " Plug 'arnaud-lb/vim-php-namespace'
