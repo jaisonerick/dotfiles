@@ -24,6 +24,8 @@
   template = ~/.gitmessage
 [fetch]
   prune = true
+[pull]
+  rebase = true
 [rebase]
   autosquash = true
 [git-up "bundler"]
