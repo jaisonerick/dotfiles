@@ -55,8 +55,6 @@ Plug 'altercation/vim-colors-solarized' " Enable Solarized colorscheme
 Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux and vim
 Plug 'mattn/emmet-vim'                  " Expading abbreviations with Emmet
 Plug 'scrooloose/nerdtree'              " File navigation panel on Vim
-Plug 'bling/vim-airline'                " Status/tabline for vim
-"Plug 'wakatime/vim-wakatime'            " Productivity monitoring WakaTime integration
 Plug 'honza/vim-snippets'               " Ultisnips snippets
 Plug 'SirVer/ultisnips'                 " Snippets for vim with python support
 Plug 'sickill/vim-pasta'                " Pasting with context indentation
@@ -87,6 +85,12 @@ Plug 'fatih/vim-go'   " Go development plugin for Vim
 " Unused Bundles
 " Plug 'Lokaltog/vim-easymotion'
 " Plug 'rizzatti/dash.vim'
+
+" Setup powerline to vim
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

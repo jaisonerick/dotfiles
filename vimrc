@@ -216,15 +216,11 @@ set foldmethod=indent
 " Open NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Setup Airline
+" Setup Poerline
 " Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+set showtabline=2
 
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" Add airline powerfonts symbols
-let g:airline_powerline_fonts = 1
+set laststatus=2
 
 " Setup buffers as tabs
 

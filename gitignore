@@ -15,3 +15,5 @@ log/*.log
 rerun.txt
 tmp/**/*
 /tags
+!tmp/cache/.keep
+.rake_tasks

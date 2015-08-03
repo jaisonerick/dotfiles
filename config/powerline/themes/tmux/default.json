@@ -1,0 +1,31 @@
+{
+  "segments": {
+    "left" :[
+      {
+        "function": "powerline.segments.common.vcs.branch",
+        "args": {
+          "status_colors": "True"
+        }
+      }
+    ],
+    "right": [
+      {
+        "function": "powerline.segments.common.sys.cpu_load_percent",
+        "priority": 30
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "priority": 50
+      },
+      {
+        "function": "powerline.segments.common.players.spotify_apple_script",
+        "name": "player",
+        "priority": 20
+      },
+      {
+        "function": "powerline.segments.common.net.hostname",
+        "priority": 40
+      }
+    ]
+  }
+}
