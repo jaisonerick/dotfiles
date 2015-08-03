@@ -56,7 +56,7 @@ Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux and v
 Plug 'mattn/emmet-vim'                  " Expading abbreviations with Emmet
 Plug 'scrooloose/nerdtree'              " File navigation panel on Vim
 Plug 'bling/vim-airline'                " Status/tabline for vim
-Plug 'wakatime/vim-wakatime'            " Productivity monitoring WakaTime integration
+"Plug 'wakatime/vim-wakatime'            " Productivity monitoring WakaTime integration
 Plug 'honza/vim-snippets'               " Ultisnips snippets
 Plug 'SirVer/ultisnips'                 " Snippets for vim with python support
 Plug 'sickill/vim-pasta'                " Pasting with context indentation
