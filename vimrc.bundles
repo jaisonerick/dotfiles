@@ -44,7 +44,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
-Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
+Plug 'wincent/Command-T'               " Quick search project files
+Plug 'scrooloose/syntastic'            " Syntax Check plugin
 
 if g:has_async
   Plug 'dense-analysis/ale'
