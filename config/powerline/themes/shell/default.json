@@ -3,19 +3,14 @@
     "left": [
       {
         "function": "powerline.segments.common.vcs.branch",
-        "priority": 40
+        "priority": 20
       },
       {
         "function": "powerline.segments.common.net.hostname",
         "priority": 10
       },
       {
-        "function": "powerline.segments.common.env.virtualenv",
-        "priority": 50
-      },
-      {
-        "function": "powerline.segments.shell.cwd",
-        "priority": 10
+        "function": "powerline.segments.shell.cwd"
       },
       {
         "function": "powerline.segments.shell.jobnum",

@@ -199,7 +199,6 @@ set complete=.,w,b,t,i
 " Always use vertical diffs
 set diffopt+=vertical
 
-
 " Leave insert mode using jj
 imap jj <Esc>
 
@@ -274,7 +273,7 @@ endif
 " au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
+let g:rspec_command = "call VtrSendCommand('rspec --profile -- {spec}')"
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'eslint' ]
