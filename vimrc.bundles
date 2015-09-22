@@ -46,6 +46,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 Plug 'wincent/Command-T'               " Quick search project files
 Plug 'scrooloose/syntastic'            " Syntax Check plugin
+Plug 'tpope/vim-unimpaired'            " pairs of handy bracket mappings
 
 if g:has_async
   Plug 'dense-analysis/ale'
@@ -63,12 +64,13 @@ Plug 'christoomey/vim-tmux-runner'      " Run from vim on Tmux panel
 Plug 'vim-scripts/BufOnly.vim'          " Close all buffers but the current
 Plug 'pangloss/vim-javascript'          " Improves javascrip on VIM (required by react)
 Plug 'mxw/vim-jsx'                      " Syntax Highlight with React JSX
+Plug 'kylef/apiblueprint.vim'           " Api Blueprint
 
 " Ruby Bundles
 Plug 'vim-ruby/vim-ruby'              " Ruby support on vim
 Plug 'kana/vim-textobj-user'          " Create your own text objects (used by vim-textobj-rubyblock)
 Plug 'nelstrom/vim-textobj-rubyblock' " Ruby text objects
-" Plug 'tpope/vim-rails'                " Rails support for vim
+Plug 'tpope/vim-rails'                " Rails support for vim
 Plug 'thoughtbot/vim-rspec'           " Run RSpecs from vim
 Plug 'tpope/vim-bundler'              " Support for bundler inside vim
 Plug 'tpope/vim-endwise'              " Auto add end on class, module, def, etc.

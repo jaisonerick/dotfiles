@@ -273,7 +273,7 @@ endif
 " au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('rspec --profile -- {spec}')"
+let g:rspec_command = "call VtrSendCommand('zeus rspec --profile -- {spec}')"
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'eslint' ]
@@ -358,6 +358,13 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+
+" Api Blueprint functions
+au FileType apiblueprint set ai
+" au FileType apiblueprint set si
+au FileType apiblueprint set cin
+au FileType apiblueprint set tabstop=4
+au FileType apiblueprint set shiftwidth=4
 
 let g:syntastic_ruby_checkers = ['rubocop']
 
