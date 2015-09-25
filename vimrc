@@ -295,16 +295,28 @@ let g:syntastic_html_tidy_ignore_errors = [
 au FileType go set noexpandtab
 
 " Hide tab extra char
-au FileType go set listchars+=tab:  
+" au FileType go set listchars+=tab:  
+au FileType go set nolist
+
+let g:syntastic_go_checkers = [ 'go', 'gofmt', 'golint', 'govet' ]
 
 " Automatically insert import paths
 let g:go_fmt_command = "goimports"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " Leader ====================
 " ===========================
 
 " Map CommandT to CtrlP
 map <c-p> :CommandT<CR>
+
+" Display TagBar
+nmap <c-t> :TagbarToggle<CR>
 
 nnoremap <leader>r :RunInInteractiveShell<space>
 
@@ -355,9 +367,12 @@ au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
 
 " Go Leaders
 au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>s <Plug>(go-test-func)
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>ds <Plug>(go-implements)
 
 " Api Blueprint functions
 au FileType apiblueprint set ai
@@ -365,6 +380,7 @@ au FileType apiblueprint set ai
 au FileType apiblueprint set cin
 au FileType apiblueprint set tabstop=4
 au FileType apiblueprint set shiftwidth=4
+au FileType apiblueprint setlocal textwidth=160
 
 let g:syntastic_ruby_checkers = ['rubocop']
 

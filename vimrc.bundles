@@ -65,6 +65,7 @@ Plug 'vim-scripts/BufOnly.vim'          " Close all buffers but the current
 Plug 'pangloss/vim-javascript'          " Improves javascrip on VIM (required by react)
 Plug 'mxw/vim-jsx'                      " Syntax Highlight with React JSX
 Plug 'kylef/apiblueprint.vim'           " Api Blueprint
+Plug 'majutsushi/tagbar'                " Vim plugin that displays tags in a window, ordered by scope
 
 " Ruby Bundles
 Plug 'vim-ruby/vim-ruby'              " Ruby support on vim
@@ -79,6 +80,7 @@ Plug 'justinj/vim-react-snippets'     " React snippets
 
 " Go Bundles
 Plug 'fatih/vim-go'   " Go development plugin for Vim
+Plug 'gevans/vim-ginkgo' " Ginkgo syntax highlight
 
 " PHP Bundles
 " Plug 'arnaud-lb/vim-php-namespace'
