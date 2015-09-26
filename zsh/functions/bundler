@@ -17,6 +17,7 @@ bundled_commands=(
   jekyll
   kitchen
   knife
+  lita
   middleman
   nanoc
   pry
@@ -38,6 +39,7 @@ bundled_commands=(
   thor
   unicorn
   unicorn_rails
+  yard
 )
 
 # Remove $UNBUNDLED_COMMANDS from the bundled_commands list
