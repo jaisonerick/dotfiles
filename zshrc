@@ -36,7 +36,7 @@ _load_settings "$HOME/.zsh/configs"
 
 [ -s "/Users/jaisonerick/.scm_breeze/scm_breeze.sh" ] && source "/Users/jaisonerick/.scm_breeze/scm_breeze.sh"
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
