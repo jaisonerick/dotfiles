@@ -44,7 +44,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
-Plug 'wincent/Command-T'               " Quick search project files
+Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
 Plug 'scrooloose/syntastic'            " Syntax Check plugin
 Plug 'tpope/vim-unimpaired'            " pairs of handy bracket mappings
 

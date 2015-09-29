@@ -312,8 +312,8 @@ let g:go_highlight_build_constraints = 1
 " Leader ====================
 " ===========================
 
-" Map CommandT to CtrlP
-map <c-p> :CommandT<CR>
+" " Map CommandT to CtrlP
+" map <c-p> :CommandT<CR>
 
 " Display TagBar
 nmap <c-t> :TagbarToggle<CR>
