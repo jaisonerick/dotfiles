@@ -81,6 +81,8 @@ Plug 'justinj/vim-react-snippets'     " React snippets
 " Go Bundles
 Plug 'fatih/vim-go'   " Go development plugin for Vim
 Plug 'gevans/vim-ginkgo' " Ginkgo syntax highlight
+" Plug 'jaisonerick/vim-gotest' " Go Testing plugin
+Plug 'jaisonerick/vim-ginkgo-runner' " Ginkgo test plugin
 
 " PHP Bundles
 " Plug 'arnaud-lb/vim-php-namespace'

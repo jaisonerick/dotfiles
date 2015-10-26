@@ -292,6 +292,7 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ ]
 
 " Go Settings ==========
+let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {spec}')"
 au FileType go set noexpandtab
 
 " Hide tab extra char
@@ -366,8 +367,11 @@ au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
 au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
 
 " Go Leaders
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>s <Plug>(go-test-func)
+au FileType go nnoremap <leader>t :call RunCurrentGinkgoFile()<CR>
+au FileType go nnoremap <leader>s :call RunNearestGinkgo()<CR>
+au FileType go nnoremap <leader>l :call RunLastGinkgo()<CR>
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>s <Plug>(go-test-func)
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>dv <Plug>(go-def-vertical)

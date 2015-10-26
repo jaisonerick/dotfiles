@@ -17,3 +17,4 @@ tmp/**/*
 /tags
 !tmp/cache/.keep
 .rake_tasks
+.yardoc
