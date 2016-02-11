@@ -113,7 +113,7 @@ let g:CommandTMaxHeight = 10
 let g:CommandTMatchWindowReverse = 1
 
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 " Numbers
@@ -386,7 +386,7 @@ au FileType apiblueprint set tabstop=4
 au FileType apiblueprint set shiftwidth=4
 au FileType apiblueprint setlocal textwidth=160
 
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 function! ListLeaders()
      silent! redir @a

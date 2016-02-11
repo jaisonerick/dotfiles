@@ -10,6 +10,7 @@
 /node_modules/
 /tmp
 /vendor
+.env.local
 db/*.sqlite3
 log/*.log
 rerun.txt

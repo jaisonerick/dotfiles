@@ -35,3 +35,8 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[diff "gpg"]
+  textconv = dotgpg unsafe_cat
+[merge "gpg"]
+  name = dotgpg merge driver
+  driver = "dotgpg merge %O %A %B"
