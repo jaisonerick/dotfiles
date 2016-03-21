@@ -47,6 +47,8 @@ Plug 'vim-scripts/tComment'
 Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
 Plug 'scrooloose/syntastic'            " Syntax Check plugin
 Plug 'tpope/vim-unimpaired'            " pairs of handy bracket mappings
+Plug 'christoomey/vim-system-copy'     " System copy and paste (cp and cv)
+
 
 if g:has_async
   Plug 'dense-analysis/ale'
