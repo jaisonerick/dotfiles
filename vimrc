@@ -277,6 +277,7 @@ let g:rspec_command = "call VtrSendCommand('zeus rspec --profile -- {spec}')"
 
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'eslint' ]
+let g:jsx_ext_required = 0
 
 " HTML Settings =====
 let g:syntastic_html_tidy_exec = 'tidy5'
