@@ -86,6 +86,11 @@ Plug 'gevans/vim-ginkgo' " Ginkgo syntax highlight
 " Plug 'jaisonerick/vim-gotest' " Go Testing plugin
 Plug 'jaisonerick/vim-ginkgo-runner' " Ginkgo test plugin
 
+" Python Bundles
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+
+
 " PHP Bundles
 " Plug 'arnaud-lb/vim-php-namespace'
 " Plug 'tobyS/vmustache' " Dependency of tobyS/pdv

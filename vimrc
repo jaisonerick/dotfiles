@@ -296,6 +296,19 @@ let g:syntastic_html_tidy_ignore_errors = [
 let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {spec}')"
 au FileType go set noexpandtab
 
+" Python Settings =====
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+    \ match BadWhitespace /s\+$/
+
+let python_highlight_all=1
+
 " Hide tab extra char
 " au FileType go set listchars+=tab:  
 au FileType go set nolist
