@@ -297,15 +297,13 @@ let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {sp
 au FileType go set noexpandtab
 
 " Python Settings =====
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-    \ match BadWhitespace /s\+$/
+au FileType python set tabstop=4
+au FileType python set softtabstop=4
+au FileType python set shiftwidth=4
+au FileType python set textwidth=79
+au FileType python set expandtab
+au FileType python set autoindent
+au FileType python set fileformat=unix
 
 let python_highlight_all=1
 
