@@ -298,14 +298,16 @@ au FileType go set noexpandtab
 
 " Python Settings =====
 au FileType python set tabstop=4
+au FileType python set tabstop=4
 au FileType python set softtabstop=4
 au FileType python set shiftwidth=4
-au FileType python set textwidth=79
+au FileType python set textwidth=120
 au FileType python set expandtab
 au FileType python set autoindent
 au FileType python set fileformat=unix
 
 let python_highlight_all=1
+let g:pymode_rope_completion = 0
 
 " Hide tab extra char
 " au FileType go set listchars+=tab:  

@@ -89,6 +89,7 @@ Plug 'jaisonerick/vim-ginkgo-runner' " Ginkgo test plugin
 " Python Bundles
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
+Plug 'klen/python-mode'
 
 
 " PHP Bundles
