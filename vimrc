@@ -275,6 +275,10 @@ endif
 " Ruby Settings =====
 let g:rspec_command = "call VtrSendCommand('rspec --profile -- {spec}')"
 
+augroup filetypedetect
+  au BufRead,BufNewFile *.inky set filetype=eruby.html
+augroup END
+
 " Javascript Settings =====
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:jsx_ext_required = 0
@@ -291,6 +295,8 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ 'discarding unexpected <ng',
   \ 'discarding unexpected </ng'
   \ ]
+
+let g:html_indent_inctags = 'p,li,dt,dd,container,columns,row,button,wrapper,callout'
 
 " Go Settings ==========
 let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {spec}')"
