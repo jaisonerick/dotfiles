@@ -273,7 +273,7 @@ endif
 " au FileType php nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('rspec --profile -- {spec}')"
+let g:rspec_command = "call VtrSendCommand('bin/rspec --profile -- {spec}')"
 
 augroup filetypedetect
   au BufRead,BufNewFile *.inky set filetype=eruby.html
