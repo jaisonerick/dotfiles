@@ -41,6 +41,3 @@
 [merge "gpg"]
   name = dotgpg merge driver
   driver = "dotgpg merge %O %A %B"
-[user]
-  email = jaisonreis@gmail.com
-  name = Jaison Erick
