@@ -2,7 +2,7 @@ if &compatible
   set nocompatible
 end
 
-" Remove declared plugins
+" Remove declared plugins - https://github.com/thoughtbot/dotfiles/commit/3bbab420bce4d7e3f00df0e60466609a5f77e0f6
 function! s:UnPlug(plug_name)
   if has_key(g:plugs, a:plug_name)
     call remove(g:plugs, a:plug_name)
@@ -12,11 +12,12 @@ command!  -nargs=1 UnPlug call s:UnPlug(<args>)
 
 let g:has_async = v:version >= 800 || has('nvim')
 
+" Initialize Vim Plug (https://github.com/junegunn/vim-plug)
 call plug#begin('~/.vim/bundle')
 
-" Define bundles via Github repos
-Plug 'christoomey/vim-run-interactive'
-
+"
+" == VIM Overall Plugins ==
+"
 " If fzf has already been installed via Homebrew, use the existing fzf
 " Otherwise, install fzf. The `--all` flag makes fzf accessible outside of vim
 if isdirectory("/usr/local/opt/fzf")
@@ -24,60 +25,49 @@ if isdirectory("/usr/local/opt/fzf")
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
-
 Plug 'junegunn/fzf.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'janko-m/vim-test'
-Plug 'pangloss/vim-javascript'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/tComment'
 
 if g:has_async
-  Plug 'dense-analysis/ale'
+  Plug 'dense-analysis/ale'               " Provides linting (syntax checking and semantic errors) to multiple languages
 endif
 
-" My Bundles
-Plug 'altercation/vim-colors-solarized' " Enable Solarized colorscheme
-Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux and vim
-Plug 'mattn/emmet-vim'                  " Expading abbreviations with Emmet
-Plug 'scrooloose/nerdtree'              " File navigation panel on Vim
-Plug 'sickill/vim-pasta'                " Pasting with context indentation
-Plug 'christoomey/vim-tmux-runner'      " Run from vim on Tmux panel
-Plug 'vim-scripts/BufOnly.vim'          " Close all buffers but the current
-Plug 'mxw/vim-jsx'                      " Syntax Highlight with React JSX
-Plug 'kylef/apiblueprint.vim'           " Api Blueprint
-Plug 'majutsushi/tagbar'                " Vim plugin that displays tags in a window, ordered by scope
-Plug 'ctrlpvim/ctrlp.vim'              " Quick search project files
-Plug 'scrooloose/syntastic'            " Syntax Check plugin
-Plug 'tpope/vim-unimpaired'            " pairs of handy bracket mappings
-Plug 'christoomey/vim-system-copy'     " System copy and paste (cp and cv)
+Plug 'altercation/vim-colors-solarized'   " Enable Solarized colorscheme
+Plug 'christoomey/vim-tmux-navigator'     " Seamless navigation between tmux and vim
+Plug 'christoomey/vim-tmux-runner'        " Run from vim on Tmux panel
+Plug 'vim-scripts/BufOnly.vim'            " Close all buffers but the current
+Plug 'scrooloose/nerdtree'                " File navigation panel on Vim
+Plug 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
+Plug 'sickill/vim-pasta'                  " Pasting with context indentation
+
+Plug 'pbrisbin/vim-mkdir'                 " Vim automatically creates the non-existent directory for you.
+Plug 'tpope/vim-eunuch'                   " Vim sugar for the UNIX shell commands that need it the most.
+Plug 'tpope/vim-repeat'                   " Allow '.' to repeat plugin commands (like surround, unimpaired, etc)
+Plug 'tpope/vim-surround'                 " Provides mappings to easily delete, change and add surroundings ('', etc)
+Plug 'tpope/vim-unimpaired'               " pairs of handy bracket mappings
+Plug 'vim-scripts/tComment'               " Toggle comment lines for multiple languages
+Plug 'vim-test/vim-test'                  " A Vim wrapper for running tests on different granularities.
+Plug 'tpope/vim-endwise'                  " Adds 'end' to certain languages (like ruby, vimscript, etc)
+Plug 'tpope/vim-fugitive'                 " Calls any arbitrary Git command from within Vim
+Plug 'tpope/vim-rhubarb'                  " Similar to Fugitive, but for Github
+
+Plug 'christoomey/vim-system-copy'        " System copy and paste (cp and cv)
 
 " Ruby Bundles
-Plug 'kana/vim-textobj-user'          " Create your own text objects (used by vim-textobj-rubyblock)
-Plug 'nelstrom/vim-textobj-rubyblock' " Ruby text objects
-Plug 'thoughtbot/vim-rspec'           " Run RSpecs from vim
+Plug 'vim-ruby/vim-ruby'                  " Vim's runtime files for ruby support. This includes syntax highlighting,
+                                          " indentation, omnicompletion, and various useful tools and mappings.
+Plug 'tpope/vim-rails'                    " Massive Rails vim plugin to work with Vim projects
+Plug 'tpope/vim-projectionist'            " Allows :A to automatically jump between Spec and Lib when building gems
+Plug 'tpope/vim-rake'                     " Use togehter with the above
+Plug 'tpope/vim-bundler'                  " This is a lightweight bag of Vim goodies for Bundler
+Plug 'kana/vim-textobj-user'              " Create your own text objects (used by vim-textobj-rubyblock)
+Plug 'nelstrom/vim-textobj-rubyblock'     " Ruby text objects
 
-" Go Bundles
-Plug 'gevans/vim-ginkgo' " Ginkgo syntax highlight
-Plug 'jaisonerick/vim-ginkgo-runner' " Ginkgo test plugin
+Plug 'christoomey/vim-run-interactive'    " A Vim plugin for selectively running commands via an interactive shell.
+Plug 'slim-template/vim-slim'             " Slim Syntax Highlighting (https://github.com/slim-template/slim)
 
-" Python Bundles
-Plug 'vim-scripts/indentpython.vim'
-Plug 'nvie/vim-flake8'
-Plug 'klen/python-mode'
+" HTML/Javascript Bundles
+Plug 'mattn/emmet-vim'                    " Expading abbreviations with Emmet
+Plug 'pangloss/vim-javascript'            " Syntax highlighting and improved indentation for javascript
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

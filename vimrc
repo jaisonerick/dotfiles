@@ -1,4 +1,3 @@
-scriptencoding utf-8
 set encoding=utf-8
 
 " Leader
@@ -182,22 +181,6 @@ imap jj <Esc>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-
-" Aggregate errors from all checkers
-let g:syntastic_aggregate_errors = 1
-
-" Doesnt check when quiting
-let g:syntastic_check_on_wq = 0
-
-" Auto open the errors list when they are detected
-" let g:syntastic_auto_loc_list = 1
-
-" Always stick any detected errors in the location-list
-let g:syntastic_always_populate_loc_list = 1
-
 " Expand %% to current file directory as abbr.
 cabbr <expr> %% expand('%:p:h')
 
@@ -232,58 +215,9 @@ augroup filetypedetect
 augroup END
 
 " Javascript Settings =====
-let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:jsx_ext_required = 0
 
-" HTML Settings =====
-let g:syntastic_html_tidy_exec = 'tidy5'
-
-let g:syntastic_html_tidy_ignore_errors = [
-  \ ' proprietary attribute "ng-',
-  \ ' proprietary attribute "item',
-  \ ' proprietary attribute "property',
-  \ ' proprietary attribute "ui-',
-  \ '<ng-include> is not recognized',
-  \ 'discarding unexpected <ng',
-  \ 'discarding unexpected </ng'
-  \ ]
-
 let g:html_indent_inctags = 'p,li,dt,dd,container,columns,row,button,wrapper,callout'
-
-" Go Settings ==========
-let g:ginkgo_command = "call VtrSendCommand('GOLANG_ENV=test godotenv ginkgo {spec}')"
-au FileType go set noexpandtab
-
-" Hide tab extra char
-" au FileType go set listchars+=tab:  
-au FileType go set nolist
-
-let g:syntastic_go_checkers = [ 'go', 'gofmt', 'golint', 'govet' ]
-
-" Automatically insert import paths
-let g:go_fmt_command = "goimports"
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
-" Python Settings =====
-au FileType python set tabstop=4
-au FileType python set tabstop=4
-au FileType python set softtabstop=4
-au FileType python set shiftwidth=4
-au FileType python set textwidth=120
-au FileType python set expandtab
-au FileType python set autoindent
-au FileType python set fileformat=unix
-
-let python_highlight_all=1
-let g:pymode_rope_completion = 0
-
-" Leader ====================
-" ===========================
 
 " Display TagBar
 nmap <c-t> :TagbarToggle<CR>
@@ -308,9 +242,6 @@ nnoremap <leader>fr :VtrFocusRunner<cr>
 " Search the word under cursor on current project
 nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" Search the word under cursor as file name using Ctrl+P
-nmap <leader>lw :CommandT<CR><C-\>w
-
 " Display syntax errors panels
 nmap <leader>eo :Errors<CR>
 nmap <leader>ec :lclose<CR>
@@ -330,32 +261,13 @@ nmap <leader>ba :BufOnly<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-" Ruby RSpec
-au FileType ruby nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-au FileType ruby nnoremap <leader>s :call RunNearestSpec()<CR>
-au FileType ruby nnoremap <leader>l :call RunLastSpec()<CR>
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Go Leaders
-au FileType go nnoremap <leader>t :call RunCurrentGinkgoFile()<CR>
-au FileType go nnoremap <leader>s :call RunNearestGinkgo()<CR>
-au FileType go nnoremap <leader>l :call RunLastGinkgo()<CR>
-" au FileType go nmap <leader>t <Plug>(go-test)
-" au FileType go nmap <leader>s <Plug>(go-test-func)
-au FileType go nmap <leader>i <Plug>(go-info)
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <leader>ds <Plug>(go-implements)
-
-" Api Blueprint functions
-au FileType apiblueprint set ai
-" au FileType apiblueprint set si
-au FileType apiblueprint set cin
-au FileType apiblueprint set tabstop=4
-au FileType apiblueprint set shiftwidth=4
-au FileType apiblueprint setlocal textwidth=160
-
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 function! ListLeaders()
      silent! redir @a
@@ -369,3 +281,5 @@ function! ListLeaders()
      silent! sort
      silent! let lines = getline(1,"$")
 endfunction
+
+let g:netrw_browsex_viewer = "open"
