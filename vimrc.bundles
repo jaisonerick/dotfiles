@@ -46,16 +46,20 @@ Plug 'scrooloose/nerdtree'                " File navigation panel on Vim
 Plug 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
 Plug 'sickill/vim-pasta'                  " Pasting with context indentation
 
+Plug 'lbrayner/vim-rzip'                  " Supports Zip files (for Yarn PnP)
+
 Plug 'pbrisbin/vim-mkdir'                 " Vim automatically creates the non-existent directory for you.
 Plug 'tpope/vim-eunuch'                   " Vim sugar for the UNIX shell commands that need it the most.
 Plug 'tpope/vim-repeat'                   " Allow '.' to repeat plugin commands (like surround, unimpaired, etc)
 Plug 'tpope/vim-surround'                 " Provides mappings to easily delete, change and add surroundings ('', etc)
-Plug 'tpope/vim-unimpaired'               " pairs of handy bracket mappings
+Plug 'tpope/vim-unimpaired'               " Pairs of handy bracket mappings
 Plug 'vim-scripts/tComment'               " Toggle comment lines for multiple languages
 Plug 'vim-test/vim-test'                  " A Vim wrapper for running tests on different granularities.
 Plug 'tpope/vim-endwise'                  " Adds 'end' to certain languages (like ruby, vimscript, etc)
 Plug 'tpope/vim-fugitive'                 " Calls any arbitrary Git command from within Vim
 Plug 'tpope/vim-rhubarb'                  " Similar to Fugitive, but for Github
+
+Plug 'honza/vim-snippets'                 " Vim snippets support
 
 Plug 'christoomey/vim-system-copy'        " System copy and paste (cp and cv)
 

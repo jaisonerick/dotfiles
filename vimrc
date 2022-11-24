@@ -228,19 +228,11 @@ let g:jsx_ext_required = 0
 
 let g:html_indent_inctags = 'p,li,dt,dd,container,columns,row,button,wrapper,callout'
 
-
 " COC configurations
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-emmet','coc-html', 'coc-tsserver', 'coc-yaml']
-
-" Add CoC Prettier if prettier is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-" Add CoC ESLint if ESLint is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-emmet','coc-html', 'coc-yaml', 'coc-snippets']
+let g:coc_global_extensions += ['coc-prettier']
+let g:coc_global_extensions += ['coc-eslint']
+let g:coc_global_extensions += ['coc-tsserver']
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -284,6 +276,7 @@ hi CocErrorFloat guifg=Magenta guibg=Magenta
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
@@ -293,10 +286,17 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 
 " Display TagBar
 nmap <c-t> :TagbarToggle<CR>
