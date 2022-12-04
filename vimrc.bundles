@@ -12,8 +12,6 @@ command!  -nargs=1 UnPlug call s:UnPlug(<args>)
 
 let g:has_async = v:version >= 800 || has('nvim')
 
-let g:ale_disable_lsp = 1 " Replace ALE with COC
-
 " Initialize Vim Plug (https://github.com/junegunn/vim-plug)
 call plug#begin('~/.vim/bundle')
 "
@@ -33,10 +31,6 @@ endif
 " Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
-
-if g:has_async
-  Plug 'dense-analysis/ale'               " Provides linting (syntax checking and semantic errors) to multiple languages
-endif
 
 Plug 'morhetz/gruvbox'                    " Enable Gruvbox colorscheme
 Plug 'christoomey/vim-tmux-navigator'     " Seamless navigation between tmux and vim
