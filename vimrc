@@ -139,7 +139,7 @@ nmap <C-p> [fzf-p]
 xmap <C-p> [fzf-p]
 
 " Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <silent> [fzf-p]<C-p>        :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
+nnoremap <silent> [fzf-p]p        :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
 nnoremap <silent> [fzf-p]g    :<C-u>FzfPreviewGitStatusRpc<CR>
 nnoremap <silent> [fzf-p]a    :<C-u>FzfPreviewGitActionsRpc<CR>
 nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewBuffersRpc<CR>
