@@ -79,6 +79,7 @@ Plug 'leafgarland/typescript-vim'         " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'           " JS and JSX syntax
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " Package for styled components
 Plug 'jparise/vim-graphql'                " GraphQL syntax
+Plug 'neoclide/jsonc.vim'                 " Support for JSONC
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
