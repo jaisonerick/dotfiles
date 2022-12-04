@@ -38,7 +38,7 @@ if g:has_async
   Plug 'dense-analysis/ale'               " Provides linting (syntax checking and semantic errors) to multiple languages
 endif
 
-Plug 'lifepillar/vim-solarized8'          " Enable Solarized colorscheme
+Plug 'morhetz/gruvbox'                    " Enable Gruvbox colorscheme
 Plug 'christoomey/vim-tmux-navigator'     " Seamless navigation between tmux and vim
 Plug 'christoomey/vim-tmux-runner'        " Run from vim on Tmux panel
 Plug 'vim-scripts/BufOnly.vim'            " Close all buffers but the current
