@@ -89,11 +89,6 @@ set nojoinspaces
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
-
-  nnoremap \ :Ag<SPACE>
 endif
 
 " Make it obvious where 80 characters is
@@ -130,20 +125,17 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
-
 noremap [fzf-p]   <Nop>
 nmap <C-p> [fzf-p]
 xmap <C-p> [fzf-p]
 
 " Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <silent> [fzf-p]p        :<C-u>FzfPreviewFromResourcesRpc project_mru git<CR>
-nnoremap <silent> [fzf-p]g    :<C-u>FzfPreviewGitStatusRpc<CR>
-nnoremap <silent> [fzf-p]a    :<C-u>FzfPreviewGitActionsRpc<CR>
-nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewBuffersRpc<CR>
-nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+nnoremap <silent> [fzf-p]        :<C-u>FzfPreviewProjectFilesRpc<CR>
+nnoremap <silent> <Leader>gs             :<C-u>FzfPreviewGitStatusRpc<CR>
+" nnoremap <silent> [fzf-p]g    :<C-u>FzfPreviewGitStatusRpc<CR>
+" nnoremap <silent> [fzf-p]a    :<C-u>FzfPreviewGitActionsRpc<CR>
+" nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewBuffersRpc<CR>
+" nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLinesRpc --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
 
 let g:fzf_preview_default_fzf_options = {
     \ '--layout': 'default',
@@ -187,10 +179,6 @@ set foldmethod=indent
 " Open NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Setup Poerline
-" Enable the list of buffers
-set showtabline=2
-
 " Setup buffers as tabs
 
 " This allows buffers to be hidden if you've modified a buffer.
@@ -215,10 +203,11 @@ let g:jsx_ext_required = 0
 let g:html_indent_inctags = 'p,li,dt,dd,container,columns,row,button,wrapper,callout'
 
 " COC configurations
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-emmet','coc-html', 'coc-yaml', 'coc-snippets']
+let g:coc_global_extensions = ['coc-fzf-preview', 'coc-json', 'coc-git', 'coc-emmet','coc-html', 'coc-yaml', 'coc-snippets']
 let g:coc_global_extensions += ['coc-prettier']
 let g:coc_global_extensions += ['coc-eslint']
 let g:coc_global_extensions += ['coc-tsserver']
+
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -243,11 +232,11 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
+if CocAction('hasProvider', 'hover')
+  call CocActionAsync('doHover')
+else
+  call feedkeys('K', 'in')
+endif
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -261,21 +250,21 @@ hi CocErrorFloat guifg=Magenta guibg=Magenta
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+    \ coc#pum#visible() ? coc#pum#next(1) :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ CheckBackspace() ? "\<Tab>" :
+    \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
@@ -305,11 +294,11 @@ nnoremap <leader>or :VtrOpenRunner<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
 
 " Search the word under cursor on current project
-nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <leader>k :<C-u>FzfPreviewProjectGrepRp<Space>"\b<C-R><C-W>\b"<CR>
 
 " Display syntax errors panels
-nmap <leader>eo :Errors<CR>
-nmap <leader>ec :lclose<CR>
+nmap <leader>eo :<C-u>CocCommand fzf-preview.CocDiagnostics<CR>
 
 " Move to the next buffer
 nmap <leader>a :bnext<CR>
@@ -324,7 +313,7 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>ba :BufOnly<CR>
 
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
+nmap <leader>bl :<C-u>FzfPreviewAllBuffersRpc<CR>
 
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
@@ -333,7 +322,6 @@ nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Go Leaders
-
 function! ListLeaders()
      silent! redir @a
      silent! nmap <LEADER>
