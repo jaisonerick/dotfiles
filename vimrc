@@ -190,8 +190,6 @@ if filereadable(glob("./.git/vimrc.local"))
   source ./.git/vimrc.local
 endif
 
-" Ruby Settings =====
-let g:rspec_command = "call VtrSendCommand('bin/rspec --profile -- {spec}')"
 
 augroup filetypedetect
   au BufRead,BufNewFile *.inky set filetype=eruby.html
@@ -316,6 +314,9 @@ nmap <leader>ba :BufOnly<CR>
 nmap <leader>bl :<C-u>FzfPreviewAllBuffersRpc<CR>
 
 " vim-test mappings
+let test#javascript#jest#executable = 'pnpm exec jest'
+let test#strategy = "vtr"
+
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
