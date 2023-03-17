@@ -1,5 +1,10 @@
 # load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions /usr/local/share/zsh-completions $fpath)
+fpath=(~/.zsh/completion $fpath)
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 # completion; use cache if updated within 24h
 autoload -Uz compinit
