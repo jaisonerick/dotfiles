@@ -24,7 +24,7 @@ if executable("brew")
 endif
 
 if exists("g:brew_fzf_path") && isdirectory(g:brew_fzf_path)
-  Plug g:brew_fzf_path
+  Plug g:brew_fzf_path 
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
