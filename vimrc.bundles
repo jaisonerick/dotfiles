@@ -38,6 +38,7 @@ Plug 'vim-scripts/BufOnly.vim'            " Close all buffers but the current
 Plug 'scrooloose/nerdtree'                " File navigation panel on Vim
 Plug 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
 Plug 'sickill/vim-pasta'                  " Pasting with context indentation
+Plug 'puremourning/vimspector'            " Vim Debugger
 
 Plug 'lbrayner/vim-rzip'                  " Supports Zip files (for Yarn PnP)
 
