@@ -59,6 +59,8 @@ Plug 'christoomey/vim-system-copy'        " System copy and paste (cp and cv)
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete for Vim
 
+Plug 'hashivim/vim-terraform'             " Terraform support
+
 " Ruby Bundles
 Plug 'vim-ruby/vim-ruby'                  " Vim's runtime files for ruby support. This includes syntax highlighting,
                                           " indentation, omnicompletion, and various useful tools and mappings.
