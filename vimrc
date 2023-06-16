@@ -205,6 +205,7 @@ let g:coc_global_extensions = ['coc-fzf-preview', 'coc-json', 'coc-git', 'coc-em
 let g:coc_global_extensions += ['coc-prettier']
 let g:coc_global_extensions += ['coc-eslint']
 let g:coc_global_extensions += ['coc-tsserver']
+let g:coc_global_extensions += ['coc-deno']
 
 
 nmap <silent> gd <Plug>(coc-definition)

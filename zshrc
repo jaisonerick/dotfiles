@@ -43,3 +43,4 @@ _load_settings "$HOME/.zsh/configs"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -f ~/.scm_breeze/scm_breeze.sh ]] && source ~/.scm_breeze/scm_breeze.sh
+
