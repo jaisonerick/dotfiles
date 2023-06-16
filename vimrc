@@ -207,6 +207,7 @@ let g:coc_global_extensions += ['coc-eslint']
 let g:coc_global_extensions += ['coc-tsserver']
 let g:coc_global_extensions += ['coc-deno']
 
+let g:coc_global_extensions += ['coc-ltex']
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
