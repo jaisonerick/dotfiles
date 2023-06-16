@@ -209,6 +209,8 @@ let g:coc_global_extensions += ['coc-deno']
 
 let g:coc_global_extensions += ['coc-ltex']
 
+let g:coc_global_extensions += ['coc-elixir']
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
