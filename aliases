@@ -4,6 +4,8 @@ alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias vim="nvim"
+alias vimdiff="nvim -d"
 
 # Bundler
 alias b="bundle"
