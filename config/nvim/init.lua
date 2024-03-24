@@ -13,4 +13,3 @@ require('fzf')
 require('plugins.lsp')
 require('plugins.autocomplete')
 require('plugins.treesitter')
-

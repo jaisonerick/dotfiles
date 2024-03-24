@@ -1,3 +1,4 @@
 EXCLUDES="*.md LICENSE iTerm"
 DOTFILES_DIRS="$HOME/dotfiles $HOME/Documents/dotfiles"
 COPY_ALWAYS="git_template/HEAD"
+SYMLINK_DIRS="config/nvim zsh"
