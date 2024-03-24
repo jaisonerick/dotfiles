@@ -198,6 +198,7 @@ configuration:
 
 [git](http://git-scm.com/) configuration:
 
+- Adds a `co-upstream-pr $PR_NUMBER $LOCAL_BRANCH_NAME` subcommand to checkout remote upstream branch into a local branch.
 - Adds a `create-branch` alias to create feature branches.
 - Adds a `delete-branch` alias to delete feature branches.
 - Adds a `merge-branch` alias to merge feature branches into master.
@@ -213,8 +214,17 @@ configuration:
 - Add trusted binstubs to the `PATH`.
 - Load the ASDF version manager.
 
+[Rails](https://rubyonrails.org)
+
+- Adds [railsrc][] with `--database=postgresql`. If you need to use another
+  database, you can override this value like so: `rails new my_app --database=mysql` or
+`rails new my_app --no_rc`
+
+[railsrc]: https://github.com/rails/rails/blob/7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d/railties/lib/rails/generators/rails/app/USAGE#L5C1-L7
+
 Shell aliases and scripts:
 
+- `...` for quicker navigation to the parent's parent directory.
 - `b` for `bundle`.
 - `g` with no arguments is `git status` and with arguments acts like `git`.
 - `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
@@ -232,16 +242,17 @@ in this project.
 
 ## License
 
-dotfiles is copyright © 2009-2018 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
 
+<!-- START /templates/footer.md -->
 ## About thoughtbot
 
-![thoughtbot](https://thoughtbot.com/brand_assets/93:44.svg)
+![thoughtbot](https://thoughtbot.com/thoughtbot-logo-for-readmes.svg)
 
-dotfiles is maintained and funded by thoughtbot, inc.
+This repo is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
 We love open source software!
@@ -250,3 +261,5 @@ We are [available for hire][hire].
 
 [community]: https://thoughtbot.com/community?utm_source=github
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+
+<!-- END /templates/footer.md -->
