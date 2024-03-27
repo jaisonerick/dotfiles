@@ -19,6 +19,7 @@ return {
 
       local lspconfig = require('lspconfig')
       lspconfig.tsserver.setup({})
+      lspconfig.emmet_ls.setup({})
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_init = function(client)

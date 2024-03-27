@@ -9,7 +9,7 @@ return {
         ensure_installed = { "lua", "vim", "vimdoc", "elixir", "javascript", "html" },
         sync_install = false,
         highlight = { enable = true },
-        -- indent = { enable = true },  
+        indent = { enable = true },  
       })
     end
   },
