@@ -10,20 +10,27 @@ vim.keymap.set('n', '<leader>a', '<cmd>bnext<CR>', {desc='Move to the next buffe
 vim.keymap.set('n', '<leader>z', '<cmd>bprevious<CR>', {desc='Move to the previous buffer'})
 vim.keymap.set('n', '<leader>bq', '<cmd>bp <BAR> bd #<CR>', {desc='Close the current buffer and move to the previous one'})
 
--- 'vim-test/vim-test'
--- Test configurations
-vim.keymap.set('n', '<Leader>t', '<cmd>TestFile<CR>')
-vim.keymap.set('n', '<Leader>s', '<cmd>TestNearest<CR>')
-vim.keymap.set('n', '<Leader>l', '<cmd>TestLast<CR>')
-vim.keymap.set('n', '<leader>gt', '<cmd>TestVisit<CR>')
-
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- greatest remap ever
-vim.keymap.set("x", "<leadeR>y", [["_dP]])
+vim.keymap.set("x", "<leader>y", [["_dP]])
 
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "cp", [["+y]])
+vim.keymap.set({"n", "v"}, "cp", [["+zy]])
 vim.keymap.set("n", "cP", [["+Y]])
+
+vim.keymap.set("n", "cv", [["+]p]])
+vim.keymap.set("n", "cV", [[<cmd>pu +<cr>]])
+
+
+vim.api.nvim_create_user_command('Remove', function(opts)
+  local file_path = vim.fn.expand('%')
+
+  local success, err = os.remove(file_path)
+  if success then
+    vim.api.nvim_buf_delete(0, {force = true})
+    print("File removed: " .. file_path)
+  else
+    print("Error removing file: " .. err)
+  end
+end, { nargs = 0 })

@@ -1,6 +1,6 @@
 
-vim.opt.mouse = 'a'
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.mouse = ''
+-- vim.opt.clipboard = 'unnamedplus'
 
 -- basic settings
 vim.opt.encoding = "utf-8"
@@ -77,3 +77,8 @@ vim.opt.joinspaces = false -- Insert one space after '.', '?' and '!' with join
 vim.opt.wildmenu = true -- on TAB, complete options for system command
 vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc' -- Ignore these when expanding wildcards
 vim.opt.wildmode = 'list:longest,list:full'
+
+vim.fn.sign_define("DiagnosticSignError", {text = "✘", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = "▲", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = "»", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint", {text = "⚑", texthl = "DiagnosticSignHint"})

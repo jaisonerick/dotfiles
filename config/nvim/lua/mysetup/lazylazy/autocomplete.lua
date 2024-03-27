@@ -7,7 +7,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/nvim-cmp",
       "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip"
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local has_words_before = function()
@@ -19,13 +19,32 @@ return {
       local luasnip = require("luasnip")
 
       local cmp = require('cmp')
+
       cmp.setup({
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'nvim_lsp' },
+          { name = 'path' },
         }, {
-            { name = 'buffer' },
-          }),
+          { name = 'buffer' },
+        }),
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        formatting = {
+          fields = {'menu', 'abbr', 'kind' },
+          format = function(entry, vim_item)
+            vim_item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              nvim_lua = "[Lua]",
+              latex_symbols = "[LaTeX]",
+            })[entry.source.name]
+            return vim_item
+          end
+        },
         mapping = {
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
