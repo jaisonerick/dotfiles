@@ -84,9 +84,9 @@ set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+if executable('rg')
   " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=rg\ --nogroup\ --nocolor
 endif
 
 " Make it obvious where 80 characters is

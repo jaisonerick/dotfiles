@@ -9,9 +9,6 @@ vim.keymap.set('n', '<leader>=', '<cmd>wincmd =<cr>', {desc='Zoom out current pa
 vim.keymap.set('n', '<leader>a', '<cmd>bnext<CR>', {desc='Move to the next buffer'})
 vim.keymap.set('n', '<leader>z', '<cmd>bprevious<CR>', {desc='Move to the previous buffer'})
 vim.keymap.set('n', '<leader>bq', '<cmd>bp <BAR> bd #<CR>', {desc='Close the current buffer and move to the previous one'})
-vim.keymap.set('n', '<leader>ba', '<cmd>BufOnly<CR>', {desc='Close all buffers but the current'})
-
--- Plugins Mapping
 
 -- 'vim-test/vim-test'
 -- Test configurations
@@ -20,17 +17,13 @@ vim.keymap.set('n', '<Leader>s', '<cmd>TestNearest<CR>')
 vim.keymap.set('n', '<Leader>l', '<cmd>TestLast<CR>')
 vim.keymap.set('n', '<leader>gt', '<cmd>TestVisit<CR>')
 
--- 'scrooloose/nerdtree'
--- Open NerdTree
-vim.keymap.set('', '<C-n>', '<cmd>NvimTreeToggle<CR>')
--- Open NERDTree on current file
-vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeFindFile<cr>')
 
--- 'majutsushi/tagbar'
--- vim.keymap.set('n', '<c-t>', '<cmd>TagbarToggle<cr>')
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- 'christoomey/vim-tmux-runner'
--- VTR Mappings
-vim.keymap.set('n', '<leader>va', '<cmd>VtrAttachToPane<cr>')
-vim.keymap.set('n', '<leader>or', '<cmd>VtrOpenRunner<cr>')
-vim.keymap.set('n', '<leader>fr', '<cmd>VtrFocusRunner<cr>')
+-- greatest remap ever
+vim.keymap.set("x", "<leadeR>y", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "cp", [["+y]])
+vim.keymap.set("n", "cP", [["+Y]])
