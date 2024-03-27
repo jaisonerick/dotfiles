@@ -8,21 +8,38 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim' },
-    keys = { "<C-p>", "<leader>ps", "<leader>k", "<leader>bl", "<leader>vh", "<leader>vh" },
     config = function()
       require('telescope').setup({
         defaults = {
-          layout_config = {
-            anchor = "S",
-            height = 20
+          find_command = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--trim"
           },
+          layout_config = {
+            width = 0.75,
+            preview_cutoff = 120,
+            prompt_position = "bottom",
+            vertical = { mirror = false },
+            horizontal = {
+              mirror = false,
+              preview_width = 0.6,
+            },
+          },
+          file_ignore_patterns = { "^%.git/", "^node_modules/", "^__pycache__/" },
+          set_env = { ["COLORTERM"] = "truecolor" },
           mappings = {
             i = {
-              ["<C-k>"] = "move_selection_previous", 
-              ["<C-j>"] = "move_selection_next", 
-              ["<C-o>"] = "select_default", 
-              ["<C-v>"] = "select_vertical", 
-              ["<C-s>"] = "select_horizontal", 
+              ["<C-k>"] = "move_selection_previous",
+              ["<C-j>"] = "move_selection_next",
+              ["<C-o>"] = "select_default",
+              ["<C-v>"] = "select_vertical",
+              ["<C-s>"] = "select_horizontal",
             }
           }
         }
@@ -31,7 +48,8 @@ return {
 
       local builtin = require('telescope.builtin')
 
-      vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+      vim.keymap.set('n', '<C-p>', builtin.git_files, { })
+      vim.keymap.set('n', '<leader>vf', builtin.find_files, {})
       vim.keymap.set('n', '<leader>ps', function()
         builtin.live_grep({ search = vim.fn.input("Grep > ") })
       end)
