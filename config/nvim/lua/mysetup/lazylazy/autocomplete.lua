@@ -5,6 +5,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/nvim-cmp",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
@@ -25,6 +26,7 @@ return {
           { name = 'luasnip' },
           { name = 'nvim_lsp' },
           { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
         }, {
           { name = 'buffer' },
         }),
@@ -46,40 +48,8 @@ return {
           end
         },
         mapping = {
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              if #cmp.get_entries() == 1 then
-                cmp.confirm({ select = true })
-              else
-                cmp.select_next_item()
-              end
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-
-              if #cmp.get_entries() == 1 then
-                cmp.confirm({ select = true })
-              end
-            else
-              fallback()
-            end
-          end, {"i", "s"}),
-
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, {"i", "s"}),
-
-          ['<CR>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false}),
+          ['<C-y>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<C-k>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-          ['<C-j>'] = cmp.mapping.select_next_item({behavior = 'select'}),
 
           ['<C-p>'] = cmp.mapping(function()
             if cmp.visible() then
@@ -97,14 +67,34 @@ return {
             end
           end),
 
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-u>"] = cmp.mapping.scroll_docs(4),
+          ["<C-u>"] = cmp.mapping.select_prev_item({behavior = 'select', count = 4}),
+          ["<C-d>"] = cmp.mapping.select_next_item({behavior = 'select', count = 4}),
+          ["U"] = cmp.mapping.scroll_docs(-4),
+          ["D"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete()
         },
         snippet = {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end
         },
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+          }),
+        matching = { disallow_symbol_nonprefix_matching = false }
+      })
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
       })
     end
   }

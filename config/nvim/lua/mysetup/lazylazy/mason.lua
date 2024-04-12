@@ -10,7 +10,7 @@ return {
 
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "emmet_ls" },
+        ensure_installed = { "lua_ls", "tsserver", "emmet_ls", "tailwindcss", "prismals", "rust_analyzer", "clangd", "asm_lsp" },
         handers = {
           function(server)
             require('lspconfig')[server].setup({

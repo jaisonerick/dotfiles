@@ -20,6 +20,11 @@ return {
       local lspconfig = require('lspconfig')
       lspconfig.tsserver.setup({})
       lspconfig.emmet_ls.setup({})
+      lspconfig.tailwindcss.setup({})
+      lspconfig.prismals.setup({})
+      lspconfig.rust_analyzer.setup({})
+      lspconfig.clangd.setup({})
+      lspconfig.asm_lsp.setup({})
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_init = function(client)
@@ -78,9 +83,9 @@ return {
 
 
           vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-          vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wl', function()
+          vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+          vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+          vim.keymap.set('n', '<leader>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, opts)
 
