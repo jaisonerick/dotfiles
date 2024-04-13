@@ -4,6 +4,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "zbirenbaum/copilot-cmp",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/nvim-cmp",
@@ -23,6 +24,7 @@ return {
 
       cmp.setup({
         sources = cmp.config.sources({
+          { name = "copilot"},
           { name = 'luasnip' },
           { name = 'nvim_lsp' },
           { name = 'path' },
@@ -43,6 +45,7 @@ return {
               luasnip = "[LuaSnip]",
               nvim_lua = "[Lua]",
               latex_symbols = "[LaTeX]",
+              copilot = "[Copilot]",
             })[entry.source.name]
             return vim_item
           end
@@ -50,6 +53,9 @@ return {
         mapping = {
           ['<C-y>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
           ['<C-e>'] = cmp.mapping.abort(),
+
+          ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+          ['<C-j>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
 
           ['<C-p>'] = cmp.mapping(function()
             if cmp.visible() then

@@ -5,7 +5,14 @@ return {
       "neovim/nvim-lspconfig"
     },
     config = function()
-      require('fidget').setup({})
+      require('fidget').setup({
+        notification = {
+          override_vim_notify = true,
+        },
+        logger = {
+          path = string.format("%s/fidget.nvim.log", vim.fn.stdpath("log")),
+        }
+      })
     end
   },
   {
@@ -71,10 +78,6 @@ return {
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
           vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
 
-          vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-          vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, opts)
-          vim.keymap.set('n', ']g', vim.diagnostic.goto_next, opts)
-
           vim.keymap.set('n', '<leader>f', function()
             vim.lsp.buf.format { async = true }
           end, opts)
@@ -91,7 +94,7 @@ return {
 
 
           vim.keymap.set('n', '<leader>vnh', vim.lsp.buf.signature_help, opts)
-        end,
+        end
       })
     end
   }
