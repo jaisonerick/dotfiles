@@ -1,6 +1,9 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'RRethy/nvim-treesitter-endwise'
+    },
     build = ':TSUpdate',
     config = function ()
       local configs = require("nvim-treesitter.configs")
@@ -11,8 +14,13 @@ return {
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+        endwise = {
+          enable = true
+        },
       })
-    end
+    end,
   },
   "nvim-treesitter/nvim-treesitter-context",
 }
+
+
