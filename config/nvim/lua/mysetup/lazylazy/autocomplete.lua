@@ -24,14 +24,28 @@ return {
 
       cmp.setup({
         sources = cmp.config.sources({
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
           { name = "copilot"},
           { name = 'luasnip' },
-          { name = 'nvim_lsp' },
           { name = 'path' },
-          { name = 'nvim_lsp_signature_help' },
-        }, {
-          { name = 'buffer' },
         }),
+        experimental = {
+          ghost_text = true
+        },
+        sorting = {
+          priority_weight = 2.0,
+          comparators = {
+            cmp.config.compare.locality,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.exact,
+            require("copilot_cmp.comparators").prioritize,
+            cmp.config.compare.score,
+            cmp.config.compare.offset,
+            cmp.config.compare.order,
+          },
+        },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
