@@ -46,12 +46,14 @@ return {
             },
             workspace = {
               checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME
-              }
+              library = vim.api.nvim_get_runtime_file("", true)
             },
             diagnostics = {
-              globals = {'vim'},
+              globals = {
+                'vim',
+                -- LuaSnip:
+                's', 'sn', 'isn', 't', 'i', 'f', 'c', 'd', 'r', 'events', 'k', 'ai', 'extras', 'l', 'rep', 'p', 'm', 'n', 'dl', 'fmt', 'fmta', 'conds', 'postfix', 'types', 'parse', 'ms'
+              },
             },
             completion = {
               callSnippet = "Replace"
