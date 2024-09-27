@@ -5,10 +5,10 @@ alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
-# alias vim="nvim"
-# alias vimdiff="nvim -d"
-alias vim="$HOME/neovim/bin/nvim"
-alias vimdiff="n$HOME/neovim/bin/nvim -d"
+alias vim="nvim"
+alias vimdiff="nvim -d"
+# alias vim="$HOME/neovim/bin/nvim"
+# alias vimdiff="n$HOME/neovim/bin/nvim -d"
 
 # Bundler
 alias b="bundle"
